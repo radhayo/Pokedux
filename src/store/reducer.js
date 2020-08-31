@@ -1,5 +1,5 @@
 const initialState = {
-    click: 0
+    click: 100
 };
 
 
