@@ -6,6 +6,7 @@ import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
 
 const App = ({ click }) => {
+  console.log(click)
   return (
     <div className="App">
       {click}

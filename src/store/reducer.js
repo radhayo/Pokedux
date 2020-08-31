@@ -1,7 +1,4 @@
-const initialState = {
-    click: 100
-};
-
+import initialState from "./initialState";
 
 const reducer = (state= initialState) => {
     return state;
