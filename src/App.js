@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
-import { connect } from 'react-redux'
+import {connect} from "react-redux"
+import {CLICK} from './store/action'
 
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
@@ -9,16 +10,16 @@ const App = ({ click }) => {
   console.log(click)
   return (
     <div className="App">
-      {click}
+      <button onClick={() => click()}>click</button>
       <GameBoy />
       <PokeList />
     </div>
   );
 };
-const mapStateToProps = ({ click }) =>{
+
+const mapDispatchToProps = dispatch => {
   return {
-    click
+    click:()=> dispatch ({ type:  CLICK})
   }
 }
-
-export default connect(mapStateToProps)(App);
+export default connect( null,mapDispatchToProps)(App);
