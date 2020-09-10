@@ -12,7 +12,7 @@ export default () => {
     return dispatch => {
 
         Promise.all(requests)
-            .then(responses => Promise.all(requests.map(res => res.json())))
+            .then(responses => Promise.all(responses.map(res => res.json())))
             .then(pokemons => pokemons.map(pokemon => ({
                 id: pokemon.id,
                 name: pokemon.name,
