@@ -7,10 +7,14 @@ import fetchPokemons from './store/fetchPokemons'
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
 
-const App = ({ click, fetchPokemons }) => {
+const App = ({ click, fetchPokemons, pending }) => {
   useEffect(() => {
   fetchPokemons()
 } , [fetchPokemons])
+
+if (pending) {
+  return <p>Chargement ...</p>;
+}
   
   return (
     <div className="App">
@@ -20,6 +24,11 @@ const App = ({ click, fetchPokemons }) => {
     </div>
   );
 };
+const mapStateToProps = ({pending}) =>{
+  return {
+    pending
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -27,4 +36,6 @@ const mapDispatchToProps = dispatch => {
     click:()=> dispatch ({ type:  CLICK})
   }
 }
-export default connect( null,mapDispatchToProps)(App);
+export default connect( 
+  mapStateToProps,
+  mapDispatchToProps)(App);

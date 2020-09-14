@@ -1,4 +1,4 @@
-import {fetchPokemonSuccess} from './action'
+import {fetchPokemonPending, fetchPokemonSuccess} from './action'
 const numberOfPokemon = 10
 
 const urls = []
@@ -10,6 +10,7 @@ for (let i = 1; i <= numberOfPokemon; i++ ) {
 const requests = urls.map(url => fetch(url))
 export default () => {
     return dispatch => {
+        dispatch(fetchPokemonPending());
 
         Promise.all(requests)
             .then(responses => Promise.all(responses.map(res => res.json())))
@@ -19,7 +20,8 @@ export default () => {
                 captureRate: pokemon.capture_rate,
                 isCatch: false,
                 img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
-            })))
+            }))
+            )
             .then(pokemons => dispatch(fetchPokemonSuccess(pokemons)))
         }
 
