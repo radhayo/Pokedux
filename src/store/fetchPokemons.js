@@ -1,5 +1,5 @@
 import {fetchPokemonPending, fetchPokemonSuccess} from './action'
-const numberOfPokemon = 10
+const numberOfPokemon = 700
 
 const urls = []
 
