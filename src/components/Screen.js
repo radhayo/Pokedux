@@ -2,8 +2,13 @@ import React from "react";
 import { connect } from 'react-redux'
 
 const Screen = ({ onScreen }) => {
-  if (onScreen.id){
-    return <h1>{onScreen.name}</h1>
+  if (onScreen.id) {
+    return (
+    <>
+    <h3 className="screen-name">{onScreen.name}</h3>
+    <img alt={onScreen.name} src={onScreen.img} />
+  </>
+    );
     }
   return (
     <>
@@ -14,6 +19,7 @@ const Screen = ({ onScreen }) => {
   );
 };
 const mapStateToProps = ({ onScreen }) => {
+
   return {
     onScreen,
   }
